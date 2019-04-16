@@ -30,6 +30,7 @@ hs_err_pid*
 *.iml
 *.ipr
 /target/
+/.mvn/
 
 ### NetBeans ###
 /nbproject/private/

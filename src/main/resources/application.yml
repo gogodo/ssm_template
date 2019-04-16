@@ -1,0 +1,45 @@
+server:
+  port: 8081
+
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml        # mybatis配置文件所在路径
+  type-aliases-package: com.jun.ssm_template.entities       # 所有Entity别名类所在包
+  mapper-locations:
+    - classpath:mybatis/mapper/**/*.xml                     # mapper映射文件
+
+spring:
+  application:
+    name: microservicecloud-dept
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource            # 当前数据源操作类型
+    driver-class-name: org.gjt.mm.mysql.Driver              # mysql驱动包
+    # 数据库名称
+    url: jdbc:mysql://192.168.1.138:3306/test?useUnicode=true&characterEncoding=utf-8&verifyServerCertificate=false&useSSL=false
+    username: alix
+    password: qwedsa
+    dbcp2:
+      min-idle: 5                                           # 数据库连接池的最小维持连接数
+      initial-size: 5                                       # 初始化连接数
+      max-total: 5                                          # 最大连接数
+      max-wait-millis: 200                                  # 等待连接获取的最大超时时间
+    platform: mysql
+    continue-on-error: true
+    initialization-mode: always
+
+
+#    # 执行初始化语句
+#    schema:
+#      - classpath:sql/schema.sql
+#    schema-username: alix
+#    schema-password: qwedsa
+#    sql-script-encoding: UTF-8
+
+# 标志为debug状态给spring
+debug: true
+
+
+pagehelper:
+  # 默认值为 false，当该参数设置为 true 时，如果 pageSize=0 或者 RowBounds.limit = 0 就会查询出全部的结果（相当于没有执行分页查询，但是返回结果仍然是 Page 类型）。
+  page-size-zero: true
+  # 分页合理化参数，默认值为false。当该参数设置为 true 时，pageNum<=0 时会查询第一页，pageNum>pages（超过总数时），会查询最后一页。默认false 时，直接根据参数进行查询。
+  reasonable: false
